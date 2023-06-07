@@ -1,14 +1,51 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const {createUser, googleSignIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+
     const onSubmit = data => {
         console.log(data)
+        setError('')
+        setSuccess('')
+        createUser(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            Swal.fire({
+                title: 'Register Successfully!',
+                text: 'Login Now',
+              })
+              navigate("/login")
+        })
+        .catch(error => setError(error.message))
     };
 
     const handleGoogleSignIn = () =>{
-
+        setError('')
+        setSuccess('')
+        googleSignIn()
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Login Successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              navigate(from, {replace: true})
+        })
+        .catch(error => setError(error.message))
     }
 
     return (
@@ -77,7 +114,9 @@ const SignUp = () => {
                         <div className='text-center mt-3'>
                             <p className='font-semibold'>Already have an account?<Link className="text-info" to="/login"> Please Login</Link> </p>
                         </div>
-                        
+                        <p className='text-secondary text-center'>{success}</p>
+                        <p className='text-secondary text-center'>{error}</p>
+
                     </div>
                 </div>
             </div>
