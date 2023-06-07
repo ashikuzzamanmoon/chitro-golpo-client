@@ -1,11 +1,18 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
+import "react-tooltip/dist/react-tooltip.css";
+// import "./styles.css";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
     const navItems = <>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/instructor">Instructors</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
-        
+
 
     </>
     return (
@@ -20,10 +27,14 @@ const Header = () => {
                     </ul>
                 </div>
                 <Link to="/">
-                    <div className="flex justify-center">
-                        <img className="h-14 bg-base-200" src="https://i.ibb.co/WgQQyCt/logo.png" alt="" />
+                    <div className="flex justify-center items-center">
+                        <img className="h-20 bg-base-200" src="https://i.ibb.co/HgX4FbC/logo-chitrogolpo-removebg-preview.png" alt="" />
                     </div>
-                    <p className="text-xl font-bold">Toys Corner</p>
+                </Link>
+                <Link to="/">
+                    <div className="">
+                        <p className="text-xl font-bold">Chitro Golpo</p>
+                    </div>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -32,7 +43,17 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login" className="btn btn-info">Login</Link>
+                {
+                    user ?
+                        <div className=" flex items-center gap-5">
+                            <img id="title" src={user?.photoURL} className="w-9 h-8 rounded-full" alt="" />
+                            <ReactTooltip anchorId='title' content={user.displayName} />
+                            <button className="btn btn-info" onClick={logOut}>Logout</button>
+                        </div>
+                        :
+                        <Link to="/login" className="btn btn-info">Login</Link>
+                }
+
             </div>
         </div>
     );
