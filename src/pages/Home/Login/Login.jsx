@@ -3,10 +3,11 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { signIn, googleSignIn } = useContext(AuthContext);
+    const { signIn, } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -16,40 +17,42 @@ const Login = () => {
     const onSubmit = data => {
         console.log(data)
         signIn(data.email, data.password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Login Successfully',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              navigate(from, {replace: true})
-        })
-        .catch(error => console.log(error))
+            .then(result => {
+                setError('')
+                setSuccess('')
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Login Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.log(error))
     };
 
 
-    const handleGoogleSignIn = () => {
-        setError('')
-        setSuccess('')
-        googleSignIn()
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Login Successfully',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              navigate(from, {replace: true})
-        })
-        .catch(error => setError(error.message))
-    }
+    // const handleGoogleSignIn = () => {
+    //     setError('')
+    //     setSuccess('')
+    //     googleSignIn()
+    //     .then(result => {
+    //         const loggedUser = result.user;
+    //         console.log(loggedUser);
+    //         Swal.fire({
+    //             position: 'top-end',
+    //             icon: 'success',
+    //             title: 'Login Successfully',
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //           })
+    //           navigate(from, {replace: true})
+    //     })
+    //     .catch(error => setError(error.message))
+    // }
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -84,9 +87,7 @@ const Login = () => {
                             <hr className="my-3" />
                         </div>
                         <div className='flex justify-center items-center'>
-                            <div>
-                                <button onClick={handleGoogleSignIn} className="font-semibold flex items-center gap-2 text-xl btn btn-outline btn-info"> <img src="https://i.ibb.co/3T5SxcN/google.png" style={{ height: "18px" }} alt="" /> Google</button>
-                            </div>
+                            <SocialLogin></SocialLogin>
                         </div>
                         <div className='text-center mt-3'>
                             <p className='font-semibold'>Do not have an account?<Link className="text-info" to="/signup"> Please Register</Link> </p>

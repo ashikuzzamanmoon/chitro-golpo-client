@@ -2,51 +2,43 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const {createUser, googleSignIn} = useContext(AuthContext);
+    const { register, handleSubmit,  formState: { errors } } = useForm();
+    const {createUser, updateUserProfile} = useContext(AuthContext);
     const navigate = useNavigate();
-    const from = location.state?.from?.pathname || '/';
+    // const from = location.state?.from?.pathname || '/';
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
     const onSubmit = data => {
-        console.log(data)
+       console.log(data);
         setError('')
         setSuccess('')
         createUser(data.email, data.password)
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
-            Swal.fire({
-                title: 'Register Successfully!',
-                text: 'Login Now',
-              })
-              navigate("/login")
+            updateUserProfile(data.name, data.photo)
+            .then(()=>{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Login Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate('/')
+            })
+            .catch(error=>{console.log(error)})
+            
+            
         })
         .catch(error => setError(error.message))
     };
 
-    const handleGoogleSignIn = () =>{
-        setError('')
-        setSuccess('')
-        googleSignIn()
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Login Successfully',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              navigate(from, {replace: true})
-        })
-        .catch(error => setError(error.message))
-    }
 
     return (
         <div>
@@ -107,9 +99,7 @@ const SignUp = () => {
                             <hr className="my-3" />
                         </div>
                         <div className='flex justify-center items-center'>
-                            <div>
-                                <button onClick={handleGoogleSignIn} className="font-semibold flex items-center gap-2 text-xl btn btn-outline btn-info"> <img src="https://i.ibb.co/3T5SxcN/google.png" style={{ height: "18px" }} alt="" /> Google</button>
-                            </div>
+                            <SocialLogin></SocialLogin>
                         </div>
                         <div className='text-center mt-3'>
                             <p className='font-semibold'>Already have an account?<Link className="text-info" to="/login"> Please Login</Link> </p>

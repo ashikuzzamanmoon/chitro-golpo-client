@@ -7,9 +7,9 @@ const Footer = () => {
                 <div className="container mx-auto px-4 py-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div>
-                            <img className="h-20 bg-gray-800" src="https://i.ibb.co/WgQQyCt/logo.png" alt="" />
+                            <img className="h-20 bg-gray-800 text-white" src="https://i.ibb.co/HgX4FbC/logo-chitrogolpo-removebg-preview.png" alt="" />
                             <h3 className="text-white text-lg font-bold mb-4">ChitroGolpo</h3>
-                            <p className="text-gray-400">Your one-stop shop for all your toy needs!</p>
+                            <p className="text-gray-400">Enhance your skills and capture mesmerizing moments.</p>
                         </div>
                         <div>
                             <h3 className="text-white text-lg font-bold mb-4">Contact Us</h3>
