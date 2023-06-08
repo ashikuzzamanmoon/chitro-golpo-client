@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const SocialLogin = () => {
@@ -15,6 +16,13 @@ const SocialLogin = () => {
             const loggedUser = result.user;
             console.log(loggedUser);
             // const saveUser = {name: loggedUser.displayName, photo: loggedUser.photoURL}
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Login Successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
             navigate(from, { replace: true });
         })
         .catch(error => console.log(error))
