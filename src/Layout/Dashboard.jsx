@@ -1,10 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 
 import { FaWallet, FaHome, FaUtensils, FaBook, FaUsers } from 'react-icons/fa';
+import useAdmin from "../hooks/useAdmin";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
+    const isAdmin = useAdmin()
 
     return (
         <div>
@@ -30,7 +31,7 @@ const Dashboard = () => {
                             
                         </> : <>
                             <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
-                            <li><NavLink to="/"><FaUsers></FaUsers> All Users</NavLink></li>
+                            <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
                             <li><NavLink to="/dashboard/history"><FaWallet></FaWallet> Payment History</NavLink></li>
                             
                         </>
