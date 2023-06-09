@@ -9,6 +9,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import InstructorPage from "../pages/Instructor/InstructorPage";
 import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import Classes from "../pages/Home/Classes/Classes";
 
   export const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
         {
           path: "/instructor",
           element: <InstructorPage></InstructorPage>
+        },
+        {
+          path: "/classes",
+          element: <Classes></Classes>
         },
         {
             path: "/login",

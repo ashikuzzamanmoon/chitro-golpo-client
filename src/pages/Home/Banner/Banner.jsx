@@ -25,7 +25,7 @@ const Banner = () => {
               <h2 className="text-2xl md:text-6xl font-bold">CAPTURE YOUR DREAM PHOTO</h2>
               <p className="text-xs md:text-xl w-3/4 text-center mx-auto">Join ChitroGolpo Photography School and learn how to capture
                 powerful images that convey emotions and narratives.Discover your artistic vision and express it through the lens.</p>
-              <button className="btn btn-info btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Explore Now</button>
+              <button className="btn btn-info btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Learn More</button>
             </div>
           </div>
         </SwiperSlide>
@@ -36,7 +36,7 @@ const Banner = () => {
               <h2 className="text-2xl md:text-6xl font-bold">CAPTURE YOUR DREAM PHOTO</h2>
               <p className="text-xs md:text-xl w-3/4 text-center mx-auto">Join ChitroGolpo Photography School and learn how to capture
                 powerful images that convey emotions and narratives.Discover your artistic vision and express it through the lens.</p>
-              <button className="btn btn-info btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Explore Now</button>
+              <button className="btn btn-info btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Learn More</button>
             </div>
           </div>
         </SwiperSlide>
@@ -47,7 +47,7 @@ const Banner = () => {
               <h2 className="text-2xl md:text-6xl font-bold">CAPTURE YOUR DREAM PHOTO</h2>
               <p className="text-xs md:text-xl w-3/4 text-center mx-auto">Join ChitroGolpo Photography School and learn how to capture
                 powerful images that convey emotions and narratives.Discover your artistic vision and express it through the lens.</p>
-              <button className="btn btn-info btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Explore Now</button>
+              <button className="btn btn-info btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Learn More</button>
             </div>
           </div>
         </SwiperSlide>
@@ -58,7 +58,7 @@ const Banner = () => {
               <h2 className="text-2xl md:text-6xl font-bold">CAPTURE YOUR DREAM PHOTO</h2>
               <p className="text-xs md:text-xl w-3/4 text-center mx-auto">Join ChitroGolpo Photography School and learn how to capture
                 powerful images that convey emotions and narratives.Discover your artistic vision and express it through the lens.</p>
-              <button className="btn btn-info btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Explore Now</button>
+              <button className="btn btn-info btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Learn More</button>
             </div>
           </div>
         </SwiperSlide>
