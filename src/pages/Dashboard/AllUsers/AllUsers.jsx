@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const AllUsers = () => {
     
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await axios.get('/users')
+        const res = await axios.get('http://localhost:5000/users')
         return res.data;
     })
 
