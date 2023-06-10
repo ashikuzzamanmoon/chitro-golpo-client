@@ -49,10 +49,10 @@ const Header = () => {
                         <div className=" flex items-center gap-5">
                             <img id="title" src={user?.photoURL} className="w-9 h-8 rounded-full" alt="" />
                             <ReactTooltip anchorId='title' content={user.displayName} />
-                            <button className="btn btn-info" onClick={logOut}>Logout</button>
+                            <button className="btn btn-info btn-xs sm:btn-sm md:btn-md" onClick={logOut}>Logout</button>
                         </div>
                         :
-                        <Link to="/login" className="btn btn-info">Login</Link>
+                        <Link to="/login" className="btn btn-info btn-xs sm:btn-sm md:btn-md">Login</Link>
                 }
 
             </div>
