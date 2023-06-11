@@ -21,8 +21,8 @@ const Footer = () => {
                         <div>
                             <h3 className="text-white text-lg font-bold mb-4">Address</h3>
                             <p className="text-gray-400">123 Main Street</p>
-                            <p className="text-gray-400">Framgate,1203</p>
-                            <p className="text-gray-400">Dhaka, Bangladesh</p>
+                            <p className="text-gray-400">City: State 12345</p>
+                            <p className="text-gray-400">Alaska 99611, USA</p>
                             <p className="text-gray-400">Email: info@chitrogolpo.com</p>
                         </div>
                         <div>
