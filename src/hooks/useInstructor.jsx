@@ -16,7 +16,7 @@ const useInstructor = () => {
         }
     })
     console.log(isInstructor);
-    return isInstructor;
+    return isInstructor?.instructor;
 };
 
 export default useInstructor;

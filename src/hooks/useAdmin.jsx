@@ -15,7 +15,7 @@ const useAdmin = () => {
         }
     })
     console.log(isAdmin);
-    return isAdmin
+    return isAdmin?.admin
    
 }
 export default useAdmin;
