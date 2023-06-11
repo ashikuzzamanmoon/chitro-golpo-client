@@ -1,13 +1,14 @@
 import { NavLink, Outlet } from "react-router-dom";
-
 import { FaWallet, FaHome, FaUsers, FaClipboardList } from 'react-icons/fa';
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 
 const Dashboard = () => {
     const isAdmin = useAdmin()
     console.log(isAdmin);
-    
+    const isInstructor = useInstructor();
+    console.log(isInstructor);
 
     return (
         <div>
@@ -24,22 +25,32 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-80 h-full bg-blue-200 text-base-content">
                         {/* Sidebar content here */}
                         {
-                        isAdmin ? <>
-                            <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/classes"><FaClipboardList></FaClipboardList> Manage Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> Manage Users</NavLink></li>
-                            
-                        </> : <>
-                            <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User Home</NavLink></li>
-                            <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
-                            <li><NavLink to="/dashboard/history"><FaWallet></FaWallet> Payment History</NavLink></li>
-                            
-                        </>
-                    }
+                            isAdmin && <>
+                                <li><NavLink to="/"><FaHome></FaHome> Admin Home</NavLink></li>
+                                <li><NavLink to="/dashboard/classes"><FaClipboardList></FaClipboardList> Manage Classes</NavLink></li>
+                                <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> Manage Users</NavLink></li>
+                            </>
+                        }
+                        {
+                            isInstructor && <>
+                                <li><NavLink to="dashboard/addClass">Add a Class</NavLink></li>
+                                <li><NavLink to="dashboard/myClasses">My Classes</NavLink></li>
+                            </>
+                        }
+                        {
+                            isAdmin || isInstructor ?
+                                <></> :
+                                <>
+                                    <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
+                                    <li><NavLink to="/dashboard/selectedClasses">Selected Classes</NavLink></li>
+                                    <li><NavLink to="/dashboard/enrolledClasses">Enrolled Classes</NavLink></li>
+                                    <li><NavLink to="/dashboard/history"><FaWallet></FaWallet> Payment History</NavLink></li>
+                                </>
+                        }
 
                         <div className="divider"></div>
                         <li><NavLink to="/"><FaHome></FaHome>Home</NavLink></li>
-                       
+
                     </ul>
 
                 </div>

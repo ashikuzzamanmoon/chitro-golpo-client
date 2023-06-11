@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import "react-tooltip/dist/react-tooltip.css";
@@ -7,17 +7,37 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 
 
 const Header = () => {
+    const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
+
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+        const localStorageTheme = localStorage.getItem('theme');
+        document.querySelector('html').setAttribute('data-theme', localStorageTheme);
+    }, [theme])
+
+    const handleTheme = n => {
+        if(n.target.checked){
+            setTheme('dark');
+        }
+        else{
+            setTheme('light');
+        }
+    }
     const { user, logOut } = useContext(AuthContext);
     const navItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructor">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
         <li><Link to='/dashboard/allusers'>Dashboard</Link></li>
+        <li>
+            <input onClick={handleTheme} type="checkbox" className="toggle toggle-md text-white" checked={theme === 'light' ? false : true} />
+        </li>
 
 
     </>
+    
     return (
-        <div className="navbar fixed z-10  md:bg-opacity-30 md:bg-black md:text-white max-w-screen-xl">
+        <div className="navbar fixed z-10 md:bg-opacity-30 md:bg-black md:text-white max-w-screen-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost text-white lg:hidden">
