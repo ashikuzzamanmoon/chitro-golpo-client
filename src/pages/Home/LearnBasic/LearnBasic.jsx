@@ -9,7 +9,7 @@ const LearnBasic = () => {
     }, [])
     return (
         <>
-            <h2 className='text-center font-bold text-4xl my-10 uppercase'>Learn Some Basic Ideas of Classification of Photography and Simple Other Things</h2>
+            <h2 className='text-center font-bold text-4xl mt-20 mb-4 uppercase'>Learn Some Basic Ideas of Classification of Photography</h2>
             <div className='grid grid-cols-1 md:grid-cols-2'>
                 <div className="card card-side bg-base-100 shadow-xl m-6 flex flex-col">
                     <div className=''>

@@ -35,25 +35,6 @@ const Login = () => {
     };
 
 
-    // const handleGoogleSignIn = () => {
-    //     setError('')
-    //     setSuccess('')
-    //     googleSignIn()
-    //     .then(result => {
-    //         const loggedUser = result.user;
-    //         console.log(loggedUser);
-    //         Swal.fire({
-    //             position: 'top-end',
-    //             icon: 'success',
-    //             title: 'Login Successfully',
-    //             showConfirmButton: false,
-    //             timer: 1500
-    //           })
-    //           navigate(from, {replace: true})
-    //     })
-    //     .catch(error => setError(error.message))
-    // }
-
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">

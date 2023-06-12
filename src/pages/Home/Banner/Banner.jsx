@@ -12,7 +12,7 @@ const Banner = () => {
     AOS.init();
 }, [])
   return (
-    <div>
+    <div className="mt-14">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}

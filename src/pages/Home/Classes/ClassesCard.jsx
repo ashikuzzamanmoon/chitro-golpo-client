@@ -9,7 +9,7 @@ const ClassesCard = ({ instructor }) => {
         setIsMounted(true);
     }, []);
 
-    const { name, image, email } = instructor;
+    const { name,  classImage, email } = instructor;
     return (
         <div>
             <Transition
@@ -19,7 +19,7 @@ const ClassesCard = ({ instructor }) => {
                 enterTo="opacity-100"
             >
                 <div className="bg-gray-200 p-4 mt-4 rounded">
-                    <img src={image} alt="Animation" className="mb-4" />
+                    <img src={classImage} alt="Animation" className="mb-4" />
                     <h1 className="text-xl font-semibold">{name}</h1>
                     <p>{email}</p>
                 </div>

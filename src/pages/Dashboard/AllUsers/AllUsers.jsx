@@ -67,7 +67,7 @@ const AllUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Make Instructor</th>
+                            <th>Make Instructor</th> 
                             <th>Make Admin</th>
                             <th>Action</th>
                         </tr>
