@@ -4,13 +4,17 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
+import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 
 const SignUp = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+
+    const { createUser, updateUserProfile,logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowVConfirmPassword] = useState(false);
 
     const onSubmit = data => {
         console.log(data);
@@ -37,11 +41,12 @@ const SignUp = () => {
                                     Swal.fire({
                                         position: 'top-end',
                                         icon: 'success',
-                                        title: 'Login Successfully',
+                                        title: 'please login',
                                         showConfirmButton: false,
                                         timer: 1500
                                     })
-                                    navigate('/')
+                                    logOut()
+                                    navigate('/login')
                                 }
                             })
 
@@ -53,6 +58,8 @@ const SignUp = () => {
             })
             .catch(error => setError(error.message))
     };
+
+    
 
 
     return (
@@ -87,15 +94,18 @@ const SignUp = () => {
                                     <input type="text" {...register("photo", { required: true })} name="photo" placeholder="photo url" className="input input-bordered" />
                                     {errors.photo && <span className="text-red-500">Photo URL is required</span>}
                                 </div>
+
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" {...register("password", { required: true, minLength: 6, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/ })} name="password" placeholder="password" className="input input-bordered" />
+                                    <input type="password" {...register("password", { required: true, minLength: 6, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/ })}  name="password" placeholder="password" className="input input-bordered" />
                                     {errors.password && <span className="text-red-500">Password is required</span>}
                                     {errors.password?.type === 'minLength' && <p className="text-red-500">Password must be 6 characters</p>}
                                     {errors.password?.type === 'pattern' && <p className="text-red-500">Password must have one uppercase and one special character</p>}
+                                    
                                 </div>
+
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Confirm Password</span>
@@ -105,6 +115,7 @@ const SignUp = () => {
                                     {errors.password?.type === 'minLength' && <p className="text-red-500">Password must be 6 characters</p>}
                                     {errors.password?.type === 'pattern' && <p className="text-red-500">Password must have one uppercase and one special character</p>}
                                 </div>
+
                                 <div className="form-control mt-6">
                                     <input className="btn btn-info" type="submit" value="Sign Up" />
                                 </div>

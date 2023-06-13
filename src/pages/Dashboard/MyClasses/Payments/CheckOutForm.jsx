@@ -62,7 +62,7 @@ const CheckOutForm = () => {
                 card:card,
                 billing_details:{
                     email:user?.email || "unknown",
-                    name:user?.displayName || "annonymous",
+                    name:user?.displayName || "anonymous",
                 },
             },
         });

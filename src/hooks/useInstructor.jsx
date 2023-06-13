@@ -15,7 +15,7 @@ const useInstructor = () => {
             return res.data
         }
     })
-    console.log(isInstructor);
+
     return isInstructor?.instructor;
 };
 

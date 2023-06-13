@@ -1,29 +1,24 @@
-import { Transition } from "@headlessui/react";
-import { useEffect, useState } from "react";
 
 
-const ClassesCard = ({ instructor }) => {
-    const [isMounted, setIsMounted] = useState(false);
 
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+const ClassesCard = ({ item }) => {
+   const handleAddToCart=()=>{
 
-    const { name,  classImage, email } = instructor;
+   }
+
+    const { name, classImage, email,className,seat } = item;
     return (
-        <div>
-            <Transition
-                show={isMounted}
-                enter="transition-opacity duration-500"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-            >
-                <div className="bg-gray-200 p-4 mt-4 rounded">
-                    <img src={classImage} alt="Animation" className="mb-4" />
-                    <h1 className="text-xl font-semibold">{name}</h1>
-                    <p>{email}</p>
+        <div className="card card-compact w-96 bg-base-100 shadow-xl">
+            <figure><img className="w-fit h-[270px]" src={classImage} alt="Shoes" /></figure>
+            <div className="card-body">
+                <h2 className="card-title">{name}</h2>
+                <p>{email}</p>
+                <p>{className}</p>
+                <p>{seat}</p>
+                <div className="card-actions justify-end">
+                    <button onClick={()=>handleAddToCart()} className="btn btn-primary">Buy Now</button>
                 </div>
-            </Transition>
+            </div>
         </div>
     );
 };

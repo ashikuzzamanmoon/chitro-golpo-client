@@ -46,11 +46,14 @@ const AuthProvider = ({children}) => {
                     email:currentUser.email
                 })
                 .then(data=>{
-                    console.log(data.data.token)
                     localStorage.setItem('token',data.data.token)
                     setLoading(false);
                 })
             }
+            else{
+                localStorage.removeItem('token')
+            }
+            setLoading(false)
             
         });
         return () => {
