@@ -1,14 +1,15 @@
 import Banner from "../Banner/Banner";
-import Classes from "../Classes/Classes";
+
 import Instructors from "../Instructors/Instructors";
 import LearnBasic from "../LearnBasic/LearnBasic";
+import TopClasses from "../TopClasses/TopClasses";
 
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <Classes></Classes>
+              <TopClasses></TopClasses>
             <Instructors></Instructors>
             <LearnBasic></LearnBasic>
         </div>

@@ -28,7 +28,11 @@ const Header = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructor">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        <li><Link to='/dashboard'>Dashboard</Link></li>
+               {
+             user &&
+             <li><Link to='/dashboard'>Dashboard</Link></li>
+
+               }
         <li>
             <input onClick={handleTheme} type="checkbox" className="toggle toggle-md text-white" checked={theme === 'light' ? false : true} />
         </li>

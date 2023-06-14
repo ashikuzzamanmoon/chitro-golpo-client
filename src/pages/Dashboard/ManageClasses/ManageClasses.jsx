@@ -115,7 +115,7 @@ const ManageClasses = () => {
                                 </button>
                             </td>
                             <td>
-                                <button disabled={`${classItem.status==='approved' && true }`}  className="btn btn-primary btn-sm">
+                                <button disabled={`${classItem.status==='approved' ? true:'' }`}  className="btn btn-primary btn-sm">
                                     Feedback
                                 </button>
                             </td>

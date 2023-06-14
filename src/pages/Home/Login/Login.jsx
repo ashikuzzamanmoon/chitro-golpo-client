@@ -36,7 +36,7 @@ const Login = () => {
 
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-base-200 mt-24">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div>
                     <img className="" src="https://i.ibb.co/xMSBjjj/login-image.png" alt="" />

@@ -1,6 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 
 const PaymentHistory = () => {
+    const {user}=useContext(AuthContext)
+    const { data: payments = [] } = useQuery(['payments',user?.email], async () => {
+        const res = await axios.get(`http://localhost:5000/payments/${user?.email}`)
+        return res.data;
+    })
     return (
         <div className="overflow-x-auto w-full">
             <table className="table">
@@ -16,27 +25,27 @@ const PaymentHistory = () => {
                 </thead>
                 <tbody>
                     {/* row 1 */}
-                    <tr>
+                    {
+                        payments?.map((item,index)=><tr
+                        key={item._id}
+                        >
                         <td>
-
+                          {index+1}
+                        </td>
+                    
+                        <td>
+                             {item.name}
                         </td>
                         <td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                            </div>
+                            {user?.email}
                         </td>
                         <td>
-                            Zemlak, Daniel and Leannon
+                            ${item.price}
                         </td>
-                        <td>Purple</td>
-                        <td>
-                            <button className="btn btn-ghost btn-xs">details</button>
-                        </td>
-                    </tr>
+                        <td>{item.transactionId}</td>
+                   
+                    </tr>)
+                    }
                 </tbody>
 
             </table>

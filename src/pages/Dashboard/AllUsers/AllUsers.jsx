@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { FaTrashAlt, FaUserShield } from "react-icons/fa";
+import {  FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 
@@ -52,9 +52,6 @@ const AllUsers = () => {
     }
 
 
-    const handleDelete = () => {
-
-    }
     return (
         <div className="w-full">
             <h3 className="text-3xl font-semibold my-4">Total Users: {users.length}</h3>

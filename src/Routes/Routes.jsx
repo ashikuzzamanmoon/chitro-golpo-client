@@ -17,6 +17,7 @@ import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses"
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import Payments from "../pages/Dashboard/MyClasses/Payments/payments";
+import PrivateRoute from "./PrivateRoute";
 
   export const router = createBrowserRouter([
     {
@@ -48,7 +49,7 @@ import Payments from "../pages/Dashboard/MyClasses/Payments/payments";
     },
     {
       path: "dashboard",
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
           path: 'allusers',
@@ -79,8 +80,9 @@ import Payments from "../pages/Dashboard/MyClasses/Payments/payments";
           element: <PaymentHistory></PaymentHistory>
         },
         {
-          path:'payment',
-          element:<Payments></Payments>
+          path:'payment/:id',
+          element:<Payments></Payments>,
+          loader:({params})=>fetch(`http://localhost:5000/carts/${params.id}`)
         }
       ]
     }

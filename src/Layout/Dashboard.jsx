@@ -25,7 +25,7 @@ const Dashboard = () => {
                         {/* Sidebar content here */}
                         {
                             isAdmin && <>
-                                <li><NavLink to="/"><FaHome></FaHome> Admin Home</NavLink></li>
+                             
                                 <li><NavLink to="/dashboard/manageClasses"><FaClipboardList></FaClipboardList> Manage Classes</NavLink></li>
                                 <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> Manage Users</NavLink></li>
                             </>
@@ -42,7 +42,7 @@ const Dashboard = () => {
                             </>
                               :
                                 <>
-                                    <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
+                      
                                     <li><NavLink to="/dashboard/selectedClasses"><FaPeopleArrows></FaPeopleArrows> Selected Classes</NavLink></li>
                                     <li><NavLink to="/dashboard/enrolledClasses"><FaPeopleCarry></FaPeopleCarry>Enrolled Classes</NavLink></li>
                                     <li><NavLink to="/dashboard/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>

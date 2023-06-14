@@ -8,13 +8,13 @@ const AddClasses = () => {
     const {user}=useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data =>{
-        console.log(data)
+        const classData={className:data.className,classImage:data.classImage,instructorName:data.instructorName,email:data.email,seat:data.seat,status:data.status,enrolled:0,price:data.price}
         fetch("http://localhost:5000/classes",{
             method:"post",
             headers:{
                 "content-type":"application/json"
             },
-            body:JSON.stringify(data)
+            body:JSON.stringify(classData)
         })
         .then(res=>res.json())
         .then(data=>{
@@ -76,13 +76,13 @@ const AddClasses = () => {
                     <input type="text" defaultValue={'pending'} {...register("status")} name="seat" placeholder="Available Seats" className="input input-bordered" />
                     {errors.seat && <span className="text-red-500">Available Seats is required</span>}
                 </div>
-                <div className="form-control hidden">
+                {/* <div className="form-control hidden">
                     <label className="label">
                         <span className="label-text">Status</span>
                     </label>
                     <input type="number" defaultValue={0} {...register("enrolled")} name="seat" placeholder="Available Seats" className="input input-bordered" />
                     {errors.seat && <span className="text-red-500">Available Seats is required</span>}
-                </div>
+                </div> */}
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Price</span>

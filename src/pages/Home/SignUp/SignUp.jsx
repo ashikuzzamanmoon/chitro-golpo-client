@@ -4,17 +4,16 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
-import { FaEyeSlash, FaRegEye } from "react-icons/fa";
+
 
 const SignUp = () => {
-    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit,  reset, formState: { errors } } = useForm();
 
     const { createUser, updateUserProfile,logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowVConfirmPassword] = useState(false);
+
 
     const onSubmit = data => {
         console.log(data);
@@ -26,7 +25,7 @@ const SignUp = () => {
                 console.log(loggedUser);
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email }
+                        const saveUser = { name: data.name, email: data.email,img:data.photo}
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
@@ -41,7 +40,7 @@ const SignUp = () => {
                                     Swal.fire({
                                         position: 'top-end',
                                         icon: 'success',
-                                        title: 'please login',
+                                        title: 'Register Successfully',
                                         showConfirmButton: false,
                                         timer: 1500
                                     })
@@ -52,7 +51,7 @@ const SignUp = () => {
 
 
                     })
-                    .catch(error => { console.log(error) })
+                    .catch(error => { setError(error) })
 
 
             })
@@ -64,7 +63,7 @@ const SignUp = () => {
 
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen bg-base-200 mt-24">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div>
                         <img className="" src="https://i.ibb.co/xMSBjjj/login-image.png" alt="" />

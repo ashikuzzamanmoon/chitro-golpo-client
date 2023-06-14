@@ -7,19 +7,21 @@ import axios from "axios";
 const MyClasses = () => {
     const { user } = useContext(AuthContext)
     console.log(user?.email);
-    const { data: classes = [] } = useQuery(['classes'], async () => {
+    const { data: classes = [] } = useQuery(['classes',user?.email], async () => {
         const res = await axios.get(`http://localhost:5000/classes?email=${user?.email}`)
         return res.data;
     })
 
+
+    
     return (
         <div className="overflow-x-auto w-full">
             <table className="table">
-                {/* head */}
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Image</th>
+                        <th>Class Name</th>
                         <th>Status</th>
                         <th>Enrolled Students</th>
                         <th>Update</th>
@@ -42,13 +44,16 @@ const MyClasses = () => {
 
                             </td>
                             <td>
+                                {classItem.className}
+                            </td>
+                            <td>
                                 {classItem.status}
                             </td>
                             <td>
                                 {classItem.enrolled}
                             </td>
                             <td>
-                                <button className="btn btn-ghost btn-xs">Update</button>
+                                <button  className="btn btn-ghost btn-xs">Update</button>
                             </td>
                             <td>
                                 {}
