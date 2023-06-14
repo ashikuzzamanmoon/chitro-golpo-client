@@ -21,7 +21,7 @@ const CheckOutForm = ({info,myCartId}) =>
 
     useEffect(() => {
         if (price > 0) {
-            axios.post('http://localhost:5000/create-payment-intent', { price }, {
+            axios.post('https://assignment-12-server-side-ivory.vercel.app/create-payment-intent', { price }, {
                 headers: {
                     authorization: `bearer ${token}`
                 }
@@ -96,7 +96,7 @@ const CheckOutForm = ({info,myCartId}) =>
                 enrolledStudents
             }
 
-            axios.post('http://localhost:5000/payments', payment)
+            axios.post('https://assignment-12-server-side-ivory.vercel.app/payments', payment)
                 .then(data => {
                     // console.log(data)
                     if (data.data.insertResult.insertedId) {

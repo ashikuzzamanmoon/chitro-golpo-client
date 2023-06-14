@@ -6,7 +6,7 @@ import { Fade } from "react-awesome-reveal";
 const Classes = () => {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/classes/${false}`)
+        fetch(`https://assignment-12-server-side-ivory.vercel.app/classes/${false}`)
             .then(res => res.json())
             .then(data => {
                

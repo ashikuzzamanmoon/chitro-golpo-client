@@ -9,7 +9,7 @@ const AddClasses = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data =>{
         const classData={className:data.className,classImage:data.classImage,instructorName:data.instructorName,email:data.email,seat:data.seat,status:data.status,enrolled:0,price:data.price}
-        fetch("http://localhost:5000/classes",{
+        fetch("https://assignment-12-server-side-ivory.vercel.app/classes",{
             method:"post",
             headers:{
                 "content-type":"application/json"

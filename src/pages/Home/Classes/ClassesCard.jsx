@@ -18,7 +18,7 @@ const ClassesCard = ({ item }) => {
         const orderInfo={classId:item._id,name:item.className,imag:item.classImage,instructorName:item.instructorName,email:user?.email,price:item.price,seat:item.seat,enrolledStudents:item.enrolled}
         if(user)
         {
-           fetch('http://localhost:5000/carts',{
+           fetch('https://assignment-12-server-side-ivory.vercel.app/carts',{
             method:'POST',
             headers:{
               'content-type':'application/json'

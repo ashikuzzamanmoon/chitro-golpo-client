@@ -7,7 +7,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 const EnrolledClasses = () => {
     const {user}=useContext(AuthContext)
     const { data: payments = [] } = useQuery(['payments',user?.email], async () => {
-        const res = await axios.get(`http://localhost:5000/payments/${user?.email}`)
+        const res = await axios.get(`https://assignment-12-server-side-ivory.vercel.app/payments/${user?.email}`)
         return res.data;
     })
 

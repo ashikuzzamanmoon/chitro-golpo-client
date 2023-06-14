@@ -8,7 +8,7 @@ const MyClasses = () => {
     const { user } = useContext(AuthContext)
     console.log(user?.email);
     const { data: classes = [] } = useQuery(['classes',user?.email], async () => {
-        const res = await axios.get(`http://localhost:5000/classes?email=${user?.email}`)
+        const res = await axios.get(`https://assignment-12-server-side-ivory.vercel.app/classes?email=${user?.email}`)
         return res.data;
     })
 

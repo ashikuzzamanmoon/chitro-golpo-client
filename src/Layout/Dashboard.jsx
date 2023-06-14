@@ -26,8 +26,8 @@ const Dashboard = () => {
                         {
                             isAdmin && <>
                              
-                                <li><NavLink to="/dashboard/manageClasses"><FaClipboardList></FaClipboardList> Manage Classes</NavLink></li>
                                 <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> Manage Users</NavLink></li>
+                                <li><NavLink to="/dashboard/manageClasses"><FaClipboardList></FaClipboardList> Manage Classes</NavLink></li>
                             </>
                         }
                         {

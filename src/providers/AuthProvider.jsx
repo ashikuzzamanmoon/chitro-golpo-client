@@ -42,7 +42,7 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
             // console.log('current user', currentUser);
             if(currentUser){
-                axios.post('http://localhost:5000/jwt',{
+                axios.post('https://assignment-12-server-side-ivory.vercel.app/jwt',{
                     email:currentUser.email
                 })
                 .then(data=>{

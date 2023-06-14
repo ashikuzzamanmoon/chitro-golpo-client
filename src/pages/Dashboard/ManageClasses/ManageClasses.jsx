@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const ManageClasses = () => {
     const { data: classes = [],refetch } = useQuery(['classes'], async () => {
-        const res = await axios.get(`http://localhost:5000/classes/${true}`)
+        const res = await axios.get(`https://assignment-12-server-side-ivory.vercel.app/classes/${true}`)
         return res.data;
     })
 
@@ -13,7 +13,7 @@ const ManageClasses = () => {
         
         if (approved) {
             const details = { i: true }
-            fetch(`http://localhost:5000/classes/${id}`, {
+            fetch(`https://assignment-12-server-side-ivory.vercel.app/classes/${id}`, {
                 method: "PATCH",
                 headers: {
                     'content-type': 'application/json'
@@ -38,7 +38,7 @@ const ManageClasses = () => {
         }
   else{
     const details = { i: false }
-    fetch(`http://localhost:5000/classes/${id}`, {
+    fetch(`https://assignment-12-server-side-ivory.vercel.app/classes/${id}`, {
         method: "PATCH",
         headers: {
             'content-type': 'application/json'

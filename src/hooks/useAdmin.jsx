@@ -10,7 +10,7 @@ const useAdmin = () => {
         queryKey: ['isAdmin', user?.email],
         
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/users/admin/${user?.email}`);
+            const res = await axios.get(`https://assignment-12-server-side-ivory.vercel.app/users/admin/${user?.email}`);
             return res.data
         }
     })

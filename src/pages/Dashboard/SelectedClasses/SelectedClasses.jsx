@@ -11,13 +11,13 @@ const SelectedClasses = () => {
     const {user}=useContext(AuthContext)
 
     const { data: classes = [], refetch } = useQuery(['carts',user?.email], async () => {
-        const res = await axios.get(`http://localhost:5000/carts?email=${user?.email}`)
+        const res = await axios.get(`https://assignment-12-server-side-ivory.vercel.app/carts?email=${user?.email}`)
         return res.data;
     })
 
 
   const handleDelete=(id)=>{
-    fetch(`http://localhost:5000/carts/${id}`,{
+    fetch(`https://assignment-12-server-side-ivory.vercel.app/carts/${id}`,{
         method:"DELETE"
     })
     .then(res=>res.json())

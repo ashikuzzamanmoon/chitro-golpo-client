@@ -6,7 +6,7 @@ import { Fade } from "react-awesome-reveal";
 const InstructorPage = () => {
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://assignment-12-server-side-ivory.vercel.app/users')
             .then(res => res.json())
             .then(data => {
                 const myData=data.filter(item=>item.role ==='instructor')

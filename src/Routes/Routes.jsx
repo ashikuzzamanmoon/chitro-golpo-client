@@ -82,7 +82,7 @@ import PrivateRoute from "./PrivateRoute";
         {
           path:'payment/:id',
           element:<Payments></Payments>,
-          loader:({params})=>fetch(`http://localhost:5000/carts/${params.id}`)
+          loader:({params})=>fetch(`https://assignment-12-server-side-ivory.vercel.app/carts/${params.id}`)
         }
       ]
     }

@@ -4,9 +4,14 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import "react-tooltip/dist/react-tooltip.css";
 // import "./styles.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 
 const Header = () => {
+    const isAdmin = useAdmin();
+    const isInstructor = useInstructor();
+
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
     useEffect(() => {
@@ -30,7 +35,19 @@ const Header = () => {
         <li><Link to="/classes">Classes</Link></li>
                {
              user &&
-             <li><Link to='/dashboard'>Dashboard</Link></li>
+            <li>
+               {
+                    isAdmin && <Link to='/dashboard/allusers'>Dashboard</Link>
+                }
+                
+                {
+                    isInstructor && <Link to='/dashboard/addClass'>Dashboard</Link>
+                }
+                {
+                     isAdmin!==true  && isInstructor!==true &&
+                     <Link to='/dashboard/selectedClasses'>Dashboard</Link>    
+                }
+            </li>
 
                }
         <li>
