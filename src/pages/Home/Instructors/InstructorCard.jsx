@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const InstructorCard = ({ instructor }) => {
@@ -13,7 +14,7 @@ const InstructorCard = ({ instructor }) => {
                     <h2 className="card-title">{name}</h2>
                     <p>{email}</p>
                     <div className="card-actions">
-                        <button className="btn btn-info">Contact</button>
+                        <Link to="/contact"><button className="btn btn-info">Contact</button></Link>
                     </div>
                 </div>
             </div>

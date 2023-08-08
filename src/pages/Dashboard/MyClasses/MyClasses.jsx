@@ -25,7 +25,6 @@ const MyClasses = () => {
                         <th>Status</th>
                         <th>Enrolled Students</th>
                         <th>Update</th>
-                        <th>Feedback</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,9 +54,7 @@ const MyClasses = () => {
                             <td>
                                 <button  className="btn btn-ghost btn-xs">Update</button>
                             </td>
-                            <td>
-                                {}
-                            </td>
+                            
                         </tr>
                         )
                     }
